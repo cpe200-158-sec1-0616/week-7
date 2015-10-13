@@ -18,11 +18,16 @@ namespace twozerofoureight
         public TwoZeroFourEightView()
         {
             InitializeComponent();
+            Scoreview sc = new Scoreview();
+            sc.Visible = true;
+            sc.Enabled = true;
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
+            model.AttachObserver(sc);
+            
             controller = new TwoZeroFourEightController();
             controller.AddModel(model);
-            controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                        controller.ActionPerformed(TwoZeroFourEightController.LEFT);
         }
 
         public void Notify(Model m)
@@ -75,6 +80,7 @@ namespace twozerofoureight
             UpdateTile(lbl31,board[3, 1]);
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
+            label1.Text = ((TwoZeroFourEightModel)model)._score.ToString();
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
@@ -97,5 +103,18 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
+        private void lbl33_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void TwoZeroFourEightView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
